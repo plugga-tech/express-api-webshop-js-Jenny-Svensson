@@ -23,7 +23,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', async function(next) {
     try {
         const salt = uuidv4();
-        let userPass = await CryptoJS.AES.encrypt(this.password, salt)
+        let userPass = await CryptoJS.AES.encrypt(this.password, salt).toString();
         this.password = userPass;
         next();
     }
@@ -32,6 +32,5 @@ UserSchema.pre('save', async function(next) {
     }
 })
 
-// decrypt lösenordet från databasen så att det matchar med det användaren skriver in för att logga in
 
 module.exports = mongoose.model('User', UserSchema)
