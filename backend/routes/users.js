@@ -29,8 +29,10 @@ router.post('/add', async (req, res) => {
   const data = new Model({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      
   })
+
 
   try {
       const dataToSave = await data.save();
