@@ -23,7 +23,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', async function(next) {
     try {
         const salt = uuidv4();
-        let userPass = await CryptoJS.AES.encrypt(this.password, salt).toString();
+        let userPass = CryptoJS.AES.encrypt(this.password, salt).toString();
         this.password = userPass;
         next();
     }

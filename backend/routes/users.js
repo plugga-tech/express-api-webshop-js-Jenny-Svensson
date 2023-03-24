@@ -14,13 +14,21 @@ router.get('/', async (req, res, next) => {
 });
 
 /* GET specific user id. */
-router.get('/:id', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
+  const userId = req.body.id;
+
   try {
-    const data = await Model.findById(req.params.id);
-    res.json(data)
-  }
-  catch(error) {
-    res.status(500).json({ message: error.message });
+    const user = await Model.findById(userId);
+
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    res.json(user);
+
+  } catch(error) {
+      console.error(error);
+      res.status(500).send('Server Error');
   }
 })
 
@@ -53,7 +61,8 @@ router.post('/login', async (req, res, next) => {
     res.json(data)
   }
   catch(error) {
-    res.status(500).json({ message: error.message })
+    res.status(401).json({ message: 'Not Authorized' })
+
   }
 });
 
