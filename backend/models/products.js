@@ -19,10 +19,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    category: {
-        type: String,
-        required: false
-    },
+    //category: {
+    //    type: String,
+    //    required: false
+    //},
 })
 
 module.exports = mongoose.model('Product', productSchema)
