@@ -62,8 +62,8 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 1",
-  "description": "Beskrivning av produkt 1",
+  "name": "Produkt 2",
+  "description": "Beskrivning av produkt 2",
   "price": 100, 
   "lager": 10
 }
@@ -79,14 +79,14 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "//USER ID",
+  "user": "641d713074f1a26b5bf492fa",
       "products": [
     {
-      "productId": "// PRODUKT ID",
+      "productId": "643d68ef40220883f0ec37ae",
       "quantity": 1
     },
     {
-      "productId": "// PRODUKT ID",
+      "productId": "643d68fc40220883f0ec37b0",
       "quantity": 2
     }
   ]
