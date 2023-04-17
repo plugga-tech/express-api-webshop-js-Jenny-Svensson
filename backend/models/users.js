@@ -19,18 +19,6 @@ const UserSchema = new Schema({
     }
 });
 
-// encrypt lösenordet så att det inte riktiga lösenordet syns i databasen
-UserSchema.pre('save', async function(next) {
-    try {
-        const salt = uuidv4();
-        let userPass = CryptoJS.AES.encrypt(this.password, salt).toString();
-        this.password = userPass;
-        next();
-    }
-    catch (error) {
-        next(error);
-    }
-})
 
 
 module.exports = mongoose.model('User', UserSchema)
